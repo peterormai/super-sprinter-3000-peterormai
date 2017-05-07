@@ -1,0 +1,66 @@
+body {
+    background-color: #404040;
+    padding-top: 50px;
+}
+
+form {
+    background-color: #393f4d;
+    width: 250px;
+    height: 475px;
+    border: 1px solid black;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-style: italic;
+    font-size: 14px;
+    margin: auto;
+    color: #feda6a;
+    border-radius: 15px;
+    padding: 10px;
+    position: relative;
+    text-decoration: none;
+    line-height: 24px;
+    margin-bottom:50px;
+    -webkit-box-shadow: 10px -4px 25px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px -4px 25px 2px rgba(0,0,0,0.75);
+    box-shadow: 10px -4px 25px 2px rgba(0,0,0,0.75);
+}
+h1 {
+    font-size: 24px;
+}
+
+
+input {
+    width: 250px;
+    display: block;
+    border: 1px solid grey;
+}
+
+textarea {
+  width: 245px;
+  height: 70px;
+}   
+
+select {
+    width: 250px;
+    margin: 5px 0px 5px 0px;
+}
+
+table {
+    border-radius: 5px;
+    border-spacing: 2px;
+    margin-top: 50px;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-style: italic;
+    font-size: 14px;
+    color: white;
+    margin: 0 auto;
+    -webkit-box-shadow: 10px -4px 25px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px -4px 25px 2px rgba(0,0,0,0.75);
+    box-shadow: 10px -4px 25px 2px rgba(0,0,0,0.75);
+    padding: 5px;
+}
+
+td {
+    color: white;
+    padding: 8px;
+    text-align: center;
+}

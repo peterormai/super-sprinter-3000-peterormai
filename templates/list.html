@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Super Sprinter 3000</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='list.css') }}">
+</head>
+<body>
+    <h1>User Story manager</h1>
+    <button onclick="location.href='/story'" type="button">
+     Create a new story</button>
+    <table border="1">
+        <tr>
+            
+        </tr>
+        <tr>
+            {% for item in menu %}
+            <td>{{ item }}</td>
+            {% endfor %}
+        </tr>
+        {% for item in data_list %}
+        <tr>
+            {% for items in item %}
+            <td>{{ items }}</td>
+            {% endfor %}
+            <td><a href= /story/{{ item[0] }}> <img src="http://www.argus-tv.com/wiki/images/e/eb/ICN_EDIT_GREEN.PNG" height="20px" width="20px"/></a></td>  
+            <td><form action="/delete/{{ item[0] }}" method="post">
+            <input type="image" src="http://www.freeiconspng.com/uploads/garbage-bin-png-12.png" height="20px" width="20px"/> 
+            </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
