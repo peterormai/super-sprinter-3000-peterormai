@@ -7,7 +7,15 @@ app = Flask(__name__)
 
 @app.route('/story')
 def create():
-    return render_template('create.html')
+    webpage_title = "- Add new story"
+    sel_list = []
+    selected = []
+    button_label = "Create"
+    return render_template('create.html',
+                           webpage_title=webpage_title,
+                           sel_list=sel_list,
+                           selected=selected,
+                           button_label=button_label)
 
 
 @app.route("/story", methods=['POST'])
@@ -20,8 +28,11 @@ def create_save():
     progress = request.form['progress']
     with open('database.csv') as data:
         data_list = data.read().splitlines()
-        next_id = str(len(data_list))
-
+        data_list = [item.split("ß¤")for item in data_list]
+        if len(data_list) > 0:
+            next_id = str(int(data_list[-1][0]) + 1)
+        else:
+            next_id = '0'
     with open('database.csv', 'a') as file:
         file.write(str(next_id + "ß¤"))
         file.write(str(title + "ß¤"))
@@ -36,19 +47,25 @@ def create_save():
 @app.route("/story/<int:id>", methods=["GET"])
 def update_show(id):
     with open('database.csv') as data:
+        webpage_title = "- Edit story"
+        button_label = "Update"
         data_list = data.read().splitlines()
         data_list = [item.split("ß¤") for item in data_list]
         selected_story = []
         for item in data_list:
             if int(item[0]) == int(id):
                 selected_story = item
-
         selected = ['', '', '', '', '']
         options = ["Planning", "TODO", "In Progress", "Review", "Done"]
         for i in range(len(selected)):
             if selected_story[6] == options[i]:
                 selected[i] = "selected"
-        return render_template('update.html', sel_list=selected_story, id=id, selected=selected)
+        return render_template('create.html',
+                               sel_list=selected_story,
+                               id=('/' + str(id)),
+                               selected=selected,
+                               webpage_title=webpage_title,
+                               button_label=button_label)
 
 
 @app.route("/story/<int:id>", methods=['POST'])
@@ -69,11 +86,10 @@ def update_save(id):
                 final_list.append(new_list)
             else:
                 final_list.append(item)
-
     with open('database.csv', 'w') as file:
         for item in final_list:
-            asd = "ß¤".join(item)
-            file.write(str(asd) + "\n")
+            updated_list = "ß¤".join(item)
+            file.write(str(updated_list) + "\n")
     return redirect("/list")
 
 

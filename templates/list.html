@@ -7,13 +7,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='list.css') }}">
 </head>
 <body>
-    <h1>User Story manager</h1>
     <button onclick="location.href='/story'" type="button">
      Create a new story</button>
+    <h1>User Story manager</h1>
     <table border="1">
-        <tr>
-            
-        </tr>
         <tr>
             {% for item in menu %}
             <td>{{ item }}</td>
