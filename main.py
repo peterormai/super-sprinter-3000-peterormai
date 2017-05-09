@@ -44,7 +44,7 @@ def create_save():
     return redirect("/list")
 
 
-@app.route("/story/<int:id>", methods=["GET"])
+@app.route("/story/<int:id>")
 def update_show(id):
     with open('database.csv') as data:
         webpage_title = "- Edit story"
@@ -93,8 +93,8 @@ def update_save(id):
     return redirect("/list")
 
 
-@app.route("/", methods=['GET'])
-@app.route("/list", methods=['GET'])
+@app.route("/")
+@app.route("/list")
 def main_list():
     with open('database.csv') as data:
         data_list = data.read().splitlines()
@@ -116,6 +116,11 @@ def delete(id):
         for item in data_list:
             datas = "ß¤".join(item)
             file.write(str(datas) + "\n")
+    return redirect("/list")
+
+
+@app.errorhandler(404)
+def page_not_found(e):
     return redirect("/list")
 
 
